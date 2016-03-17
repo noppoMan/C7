@@ -2,7 +2,7 @@
 
 [![Slack][slack-badge]][slack-url]
 
-Core functionality standards for Swift.
+Core standards for Swift.
 
 License
 -------
