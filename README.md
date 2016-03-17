@@ -4,6 +4,20 @@
 
 Core standards for Swift.
 
+## Installation
+
+- Add `C7` to your `Package.swift`
+
+```swift
+import PackageDescription
+
+let package = Package(
+    dependencies: [
+        .Package(url: "https://github.com/swiftx/c7.git", majorVersion: 0, minor: 1)
+    ]
+)
+```
+
 License
 -------
 
