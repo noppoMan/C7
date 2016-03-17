@@ -1,3 +1,3 @@
 public protocol DataRepresentable {
-    var S4Data: Data { get }
+    var xData: Data { get }
 }
