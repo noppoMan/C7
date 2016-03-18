@@ -1,3 +1,3 @@
 public protocol AsyncStreamClient {
-    func connect(result: (Void throws -> Stream) -> Void)
+    func connect(result: (Void throws -> AsyncStream) -> Void)
 }
