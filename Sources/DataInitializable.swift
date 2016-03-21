@@ -1,3 +1,3 @@
 public protocol DataInitializable {
-    init(xData: Data) throws
+    init(data: Data) throws
 }
