@@ -1,3 +1,7 @@
+public enum StreamError: ErrorProtocol {
+    case closedStream(data: Data)
+}
+
 public protocol Stream {
     var closed: Bool { get }
     func close() -> Bool
