@@ -35,3 +35,9 @@ extension CaseInsensitiveString: CustomStringConvertible {
         return string
     }
 }
+
+extension String {
+    var caseInsensitive: CaseInsensitiveString {
+        return CaseInsensitiveString(self)
+    }
+}
