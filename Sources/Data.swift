@@ -29,3 +29,9 @@ public struct Data {
         self.bytes = bytes
     }
 }
+
+extension Data {
+    public init() {
+        self.bytes = []
+    }
+}
