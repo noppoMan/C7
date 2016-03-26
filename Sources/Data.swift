@@ -30,6 +30,16 @@ public struct Data {
     }
 }
 
+public protocol DataInitializable {
+    init(data: Data) throws
+}
+
+public protocol DataRepresentable {
+    var data: Data { get }
+}
+
+public protocol DataConvertible: DataInitializable, DataRepresentable {}
+
 extension Data {
     public init(_ string: String) {
         self.init([Byte](string.utf8))
@@ -164,4 +174,54 @@ extension Data: Equatable {}
 
 public func ==(lhs: Data, rhs: Data) -> Bool {
     return lhs.bytes == rhs.bytes
+}
+
+public func +=<S : Sequence where S.Iterator.Element == Byte>(lhs: inout Data, rhs: S) {
+    return lhs.bytes += rhs
+}
+
+public func +=(lhs: inout Data, rhs: Data) {
+    return lhs.bytes += rhs.bytes
+}
+
+public func +=(lhs: inout Data, rhs: DataConvertible) {
+    return lhs += rhs.data
+}
+
+@warn_unused_result
+public func +(lhs: Data, rhs: Data) -> Data {
+    return Data(lhs.bytes + rhs.bytes)
+}
+
+@warn_unused_result
+public func +(lhs: Data, rhs: DataConvertible) -> Data {
+    return lhs + rhs.data
+}
+
+@warn_unused_result
+public func +(lhs: DataConvertible, rhs: Data) -> Data {
+    return lhs.data + rhs
+}
+
+extension String: DataConvertible {
+    public init(data: Data) throws {
+        struct Error: ErrorProtocol {}
+        var string = ""
+        var decoder = UTF8()
+        var generator = data.makeIterator()
+
+        loop: while true {
+            switch decoder.decode(&generator) {
+            case .scalarValue(let char): string.append(char)
+            case .emptyInput: break loop
+            case .error: throw Error()
+            }
+        }
+
+        self.init(string)
+    }
+
+    public var data: Data {
+        return Data(self)
+    }
 }
