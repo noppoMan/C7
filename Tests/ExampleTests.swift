@@ -9,7 +9,6 @@ class ExampleTests: XCTestCase {
     }
 
 	func testReality() {
-		let config = self.config(.Development)
 		XCTAssert(2 + 2 == 4, "Something is severely wrong here.")
 	}
 
