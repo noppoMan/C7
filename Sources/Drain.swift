@@ -6,15 +6,15 @@ public final class Drain: DataRepresentable, Stream {
         if !closed {
             return buffer
         }
-        return Data([])
+        return []
     }
 
     public convenience init() {
-        self.init(Data([]))
+        self.init([])
     }
 
     public init(_ stream: Stream) {
-        var buffer = Data([])
+        var buffer: Data = []
 
         if stream.closed {
             self.closed = true
@@ -54,7 +54,7 @@ public final class Drain: DataRepresentable, Stream {
     }
 
     public func send(data: Data) throws {
-        buffer += data.bytes
+        buffer.append(contentsOf: data.bytes)
     }
     
     public func flush() throws {
