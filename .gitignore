@@ -2,3 +2,5 @@
 /.build
 /Packages
 Xcode
+xcuserdata
+*.xcodeproj

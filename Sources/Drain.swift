@@ -6,19 +6,20 @@ public final class Drain: DataRepresentable, Stream {
         if !closed {
             return buffer
         }
-        return Data([])
+        return []
     }
 
     public convenience init() {
-         self.init(Data([]))
+        self.init([])
     }
 
     public init(_ stream: Stream) {
-        var buffer = Data([])
+        var buffer: Data = []
 
         if stream.closed {
             self.closed = true
         }
+
 
         while !stream.closed {
             if let chunk = try? stream.receive() {
@@ -33,9 +34,6 @@ public final class Drain: DataRepresentable, Stream {
 
     public init(_ buffer: Data) {
         self.buffer = buffer
-        if buffer.bytes.isEmpty {
-            close()
-        }
     }
 
     public convenience init(_ buffer: DataRepresentable) {
@@ -51,22 +49,15 @@ public final class Drain: DataRepresentable, Stream {
     }
 
     public func receive() throws -> Data {
-        let data = self.data
         close()
-        return data
+        return buffer
     }
 
     public func send(data: Data) throws {
-        enum Error: ErrorProtocol {
-            case sendUnsupported
-        }
-        throw Error.sendUnsupported
+        buffer.append(contentsOf: data.bytes)
     }
-
+    
     public func flush() throws {
-        enum Error: ErrorProtocol {
-            case flushUnsupported
-        }
-        throw Error.flushUnsupported
+        buffer = []
     }
 }
