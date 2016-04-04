@@ -60,10 +60,6 @@ public final class Drain: DataRepresentable, Stream {
         return Data(data)
     }
 
-    public func receive() throws -> Data {
-        return try receive(max: Int.max)
-    }
-
     public func send(data: Data) throws {
         buffer.append(contentsOf: data.bytes)
     }
