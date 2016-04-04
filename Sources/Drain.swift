@@ -22,7 +22,7 @@ public final class Drain: DataRepresentable, Stream {
 
 
         while !stream.closed {
-            if let chunk = try? stream.receive() {
+            if let chunk = try? stream.receive(max: 1024) {
                 buffer.bytes += chunk.bytes
             } else {
                 break
@@ -48,9 +48,16 @@ public final class Drain: DataRepresentable, Stream {
         return true
     }
 
-    public func receive() throws -> Data {
-        close()
-        return buffer
+    public func receive(max byteCount: Int) throws -> Data {
+        if byteCount >= buffer.count {
+            close()
+            return buffer
+        }
+
+        let data = buffer[0..<byteCount]
+        buffer.removeFirst(byteCount)
+
+        return Data(data)
     }
 
     public func send(data: Data) throws {
