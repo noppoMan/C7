@@ -10,7 +10,7 @@ public final class StreamSequence: Sequence {
             if self.stream.closed {
                 return nil
             }
-            return try? self.stream.receive(max: Int.max)
+            return try? self.stream.receive(max: 1024)
         }
     }
 }

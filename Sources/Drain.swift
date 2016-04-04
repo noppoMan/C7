@@ -22,7 +22,7 @@ public final class Drain: DataRepresentable, Stream {
 
 
         while !stream.closed {
-            if let chunk = try? stream.receive(max: Int.max) {
+            if let chunk = try? stream.receive(max: 1024) {
                 buffer.bytes += chunk.bytes
             } else {
                 break
