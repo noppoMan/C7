@@ -53,3 +53,13 @@ extension String {
         return CaseInsensitiveString(self)
     }
 }
+
+public protocol CaseInsensitiveStringRepresentable {
+    var caseInsensitiveString: CaseInsensitiveString { get }
+}
+
+extension String: CaseInsensitiveStringRepresentable {
+    public var caseInsensitiveString: CaseInsensitiveString {
+        return CaseInsensitiveString(self)
+    }
+}
