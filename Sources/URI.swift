@@ -9,25 +9,15 @@ public struct URI {
         }
     }
 
-    public struct Query {
-        public var key: String
-        public var value: String?
-
-        public init(key: String, value: String? = nil) {
-            self.key = key
-            self.value = value
-        }
-    }
-
     public var scheme: String?
     public var userInfo: UserInfo?
     public var host: String?
     public var port: Int?
     public var path: String?
-    public var query: [Query]
+    public var query: Query
     public var fragment: String?
 
-    public init(scheme: String? = nil, userInfo: UserInfo? = nil, host: String? = nil, port: Int? = nil, path: String? = nil, query: [Query] = [], fragment: String? = nil) {
+    public init(scheme: String? = nil, userInfo: UserInfo? = nil, host: String? = nil, port: Int? = nil, path: String? = nil, query: Query = [:], fragment: String? = nil) {
         self.scheme = scheme
         self.userInfo = userInfo
         self.host = host

@@ -192,12 +192,6 @@ extension Data {
     }
 }
 
-extension Data: NilLiteralConvertible {
-    public init(nilLiteral: Void) {
-        self.init([])
-    }
-}
-
 extension Data: ArrayLiteralConvertible {
     public init(arrayLiteral bytes: Byte...) {
         self.init(bytes)
@@ -329,4 +323,50 @@ extension Data {
         return Data([UInt8](count: size, repeatedValue: 0))
     }
     #endif
+}
+
+extension Data {
+    #if swift(>=3.0)
+    public func hexString(delimiter delimiter: Int = 0) -> String {
+        var string = ""
+        for (index, value) in self.enumerated() {
+            if delimiter != 0 && index > 0 && index % delimiter == 0 {
+                string += " "
+            }
+            string += (value < 16 ? "0" : "") + String(value, radix: 16)
+        }
+        return string
+    }
+    #else
+    public func hexString(delimiter delimiter: Int = 0) -> String {
+        var string = ""
+        for (index, value) in self.enumerate() {
+            if delimiter != 0 && index > 0 && index % delimiter == 0 {
+                string += " "
+            }
+            string += (value < 16 ? "0" : "") + String(value, radix: 16)
+        }
+        return string
+    }
+    #endif
+
+    public var hexDescription: String {
+        return hexString(delimiter: 2)
+    }
+}
+
+extension Data: CustomStringConvertible {
+    public var description: String {
+        if let string = try? String(data: self) {
+            return string
+        }
+
+        return debugDescription
+    }
+}
+
+extension Data: CustomDebugStringConvertible {
+    public var debugDescription: String {
+        return hexDescription
+    }
 }
