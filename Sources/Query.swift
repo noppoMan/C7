@@ -43,9 +43,9 @@ extension Query {
         return fields.isEmpty
     }
 
-    public subscript(name: String) -> QueryField? {
+    public subscript(name: String) -> QueryField {
         get {
-            return fields[name]
+            return fields[name] ?? []
         }
 
         set(field) {
