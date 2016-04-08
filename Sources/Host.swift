@@ -1,3 +1,3 @@
 public protocol Host {
-    func accept(timingOut deadline: Int64) throws -> Connection
+    func accept(timingOut deadline: Int64) throws -> Stream
 }
