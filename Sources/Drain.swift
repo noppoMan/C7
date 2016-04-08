@@ -10,19 +10,18 @@ public final class Drain: DataRepresentable, Stream {
     }
 
     public convenience init() {
-        self.init([])
+        self.init(for: [])
     }
 
-    public init(_ stream: Stream) {
+    public init(for stream: Stream, timingOut deadline: Int64) {
         var buffer: Data = []
 
         if stream.closed {
             self.closed = true
         }
 
-
         while !stream.closed {
-            if let chunk = try? stream.receive(max: 1024) {
+            if let chunk = try? stream.receive(upTo: 1024, timingOut: deadline) {
                 buffer.bytes += chunk.bytes
             } else {
                 break
@@ -32,12 +31,12 @@ public final class Drain: DataRepresentable, Stream {
         self.buffer = buffer
     }
 
-    public init(_ buffer: Data) {
+    public init(for buffer: Data) {
         self.buffer = buffer
     }
 
-    public convenience init(_ buffer: DataRepresentable) {
-        self.init(buffer.data)
+    public convenience init(for buffer: DataRepresentable) {
+        self.init(for: buffer.data)
     }
 
     public func close() -> Bool {
@@ -48,7 +47,7 @@ public final class Drain: DataRepresentable, Stream {
         return true
     }
 
-    public func receive(max byteCount: Int) throws -> Data {
+    public func receive(upTo byteCount: Int, timingOut deadline: Int64) throws -> Data {
         if byteCount >= buffer.count {
             close()
             return buffer
@@ -60,11 +59,11 @@ public final class Drain: DataRepresentable, Stream {
         return Data(data)
     }
 
-    public func send(data: Data) throws {
-        buffer.append(contentsOf: data.bytes)
+    public func send(data: Data, timingOut deadline: Int64) throws {
+        buffer += data.bytes
     }
-    
-    public func flush() throws {
+
+    public func flush(timingOut deadline: Int64) throws {
         buffer = []
     }
 }

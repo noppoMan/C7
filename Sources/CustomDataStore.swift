@@ -1,3 +1,3 @@
 public protocol CustomDataStore {
-    var storage: Storage { get set }
+    var storage: [String: Any] { get set }
 }

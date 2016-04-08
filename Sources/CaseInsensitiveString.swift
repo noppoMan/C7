@@ -19,11 +19,11 @@ extension CaseInsensitiveString: Hashable {
 }
 
 #if swift(>=3.0)
-public func ==(lhs: CaseInsensitiveString, rhs: CaseInsensitiveString) -> Bool {
+public func == (lhs: CaseInsensitiveString, rhs: CaseInsensitiveString) -> Bool {
     return lhs.string.lowercased() == rhs.string.lowercased()
 }
 #else
-public func ==(lhs: CaseInsensitiveString, rhs: CaseInsensitiveString) -> Bool {
+public func == (lhs: CaseInsensitiveString, rhs: CaseInsensitiveString) -> Bool {
     return lhs.string.lowercaseString == rhs.string.lowercaseString
 }
 #endif
@@ -50,6 +50,16 @@ extension CaseInsensitiveString: CustomStringConvertible {
 
 extension String {
     var caseInsensitive: CaseInsensitiveString {
+        return CaseInsensitiveString(self)
+    }
+}
+
+public protocol CaseInsensitiveStringRepresentable {
+    var caseInsensitiveString: CaseInsensitiveString { get }
+}
+
+extension String: CaseInsensitiveStringRepresentable {
+    public var caseInsensitiveString: CaseInsensitiveString {
         return CaseInsensitiveString(self)
     }
 }
