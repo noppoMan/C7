@@ -18,13 +18,7 @@ extension Query: DictionaryLiteralConvertible {
     }
 }
 
-#if swift(>=3.0)
-extension Query: Sequence {}
-#else
-extension Query: SequenceType {}
-#endif
-
-extension Query {
+extension Query: Sequence {
     #if swift(>=3.0)
     public func makeIterator() -> DictionaryIterator<String, QueryField> {
         return fields.makeIterator()

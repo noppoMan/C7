@@ -12,13 +12,7 @@ extension QueryField {
     }
 }
 
-#if swift(>=3.0)
-extension QueryField: RangeReplaceableCollection, MutableCollection {}
-#else
-extension QueryField: RangeReplaceableCollectionType, MutableCollectionType {}
-#endif
-
-extension QueryField {
+extension QueryField: RangeReplaceableCollection, MutableCollection {
     public init() {
         self.init([])
     }
@@ -106,11 +100,11 @@ extension QueryField: ArrayLiteralConvertible {
 
 extension QueryField: Equatable {}
 
-public func ==(lhs: QueryField, rhs: QueryField) -> Bool {
+public func == (lhs: QueryField, rhs: QueryField) -> Bool {
     return lhs.values  == rhs.values
 }
 
-func ==<T: Equatable>(lhs: [T?], rhs: [T?]) -> Bool {
+func == <T: Equatable>(lhs: [T?], rhs: [T?]) -> Bool {
     if lhs.count != rhs.count { return false }
     for (l, r) in zip(lhs, rhs) {
         if l != r { return false }

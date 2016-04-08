@@ -22,13 +22,7 @@ extension Data {
     }
 }
 
-#if swift(>=3.0)
-extension Data: RangeReplaceableCollection, MutableCollection {}
-#else
-extension Data: RangeReplaceableCollectionType, MutableCollectionType {}
-#endif
-
-extension Data {
+extension Data: RangeReplaceableCollection, MutableCollection {
     public init() {
         self.init([])
     }
@@ -104,52 +98,52 @@ extension Data: StringLiteralConvertible {
 
 extension Data: Equatable {}
 
-public func ==(lhs: Data, rhs: Data) -> Bool {
+public func == (lhs: Data, rhs: Data) -> Bool {
     return lhs.bytes == rhs.bytes
 }
 
 #if swift(>=3.0)
-public func +=<S : Sequence where S.Iterator.Element == Byte>(lhs: inout Data, rhs: S) {
+public func += <S : Sequence where S.Iterator.Element == Byte>(lhs: inout Data, rhs: S) {
     return lhs.bytes += rhs
 }
 #else
-public func +=<S : SequenceType where S.Generator.Element == Byte>(inout lhs: Data, rhs: S) {
+public func += <S : SequenceType where S.Generator.Element == Byte>(inout lhs: Data, rhs: S) {
     return lhs.bytes += rhs
 }
 #endif
 
 #if swift(>=3.0)
-public func +=(lhs: inout Data, rhs: Data) {
+public func += (lhs: inout Data, rhs: Data) {
     return lhs.bytes += rhs.bytes
 }
 #else
-public func +=(inout lhs: Data, rhs: Data) {
+public func += (inout lhs: Data, rhs: Data) {
     return lhs.bytes += rhs.bytes
 }
 #endif
 
 #if swift(>=3.0)
-public func +=(lhs: inout Data, rhs: DataConvertible) {
+public func += (lhs: inout Data, rhs: DataConvertible) {
     return lhs += rhs.data
 }
 #else
-public func +=(inout lhs: Data, rhs: DataConvertible) {
+public func += (inout lhs: Data, rhs: DataConvertible) {
     return lhs += rhs.data
 }
 #endif
 
 @warn_unused_result
-public func +(lhs: Data, rhs: Data) -> Data {
+public func + (lhs: Data, rhs: Data) -> Data {
     return Data(lhs.bytes + rhs.bytes)
 }
 
 @warn_unused_result
-public func +(lhs: Data, rhs: DataConvertible) -> Data {
+public func + (lhs: Data, rhs: DataConvertible) -> Data {
     return lhs + rhs.data
 }
 
 @warn_unused_result
-public func +(lhs: DataConvertible, rhs: Data) -> Data {
+public func + (lhs: DataConvertible, rhs: Data) -> Data {
     return lhs.data + rhs
 }
 
