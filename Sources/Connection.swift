@@ -1,5 +1,5 @@
 public protocol Connection: Stream {
-    init(to: URI) throws
+    init(to uri: URI) throws
     var uri: URI { get }
-    func open() throws
+    func open(timingOut deadline: Int64) throws
 }

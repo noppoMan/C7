@@ -61,7 +61,7 @@ extension QueryField {
         }
     }
 
-    public subscript (bounds: Range<Int>) -> ArraySlice<String?> {
+    public subscript(bounds: Range<Int>) -> ArraySlice<String?> {
         get {
             return values[bounds]
         }

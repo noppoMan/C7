@@ -71,7 +71,7 @@ extension Data {
         }
     }
 
-    public subscript (bounds: Range<Int>) -> ArraySlice<Byte> {
+    public subscript(bounds: Range<Int>) -> ArraySlice<Byte> {
         get {
             return bytes[bounds]
         }
