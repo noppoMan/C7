@@ -3,7 +3,7 @@ public protocol AsyncHost {
 }
 
 extension AsyncHost {
-    public func accept(result: (Void throws -> AsyncStream) -> Void) {
+    public func accept(_ result: (Void throws -> AsyncStream) -> Void) {
         accept(timingOut: .never, result: result)
     }
 }

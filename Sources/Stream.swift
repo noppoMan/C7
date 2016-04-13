@@ -1,5 +1,5 @@
 public protocol Sending: AsyncSending {
-    func send(data: Data, timingOut deadline: Double) throws
+    func send(_ data: Data, timingOut deadline: Double) throws
     func flush(timingOut deadline: Double) throws
 }
 
@@ -12,7 +12,7 @@ public protocol ReceivingStream: Closable, Receiving {}
 public protocol Stream: SendingStream, ReceivingStream {}
 
 extension Sending {
-    public func send(data: Data, timingOut deadline: Double, result: (Void throws -> Void) -> Void) {
+    public func send(_ data: Data, timingOut deadline: Double, result: (Void throws -> Void) -> Void) {
         result { try self.send(data, timingOut: deadline) }
     }
 
