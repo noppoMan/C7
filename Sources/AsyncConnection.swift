@@ -3,7 +3,7 @@ public protocol AsyncConnection: AsyncStream {
 }
 
 extension AsyncConnection {
-    public func open(result: (Void throws -> AsyncConnection) -> Void) throws {
+    public func open(_ result: (Void throws -> AsyncConnection) -> Void) throws {
         try open(timingOut: .never, result: result)
     }
 }

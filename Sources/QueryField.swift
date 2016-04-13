@@ -18,7 +18,7 @@ extension QueryField: RangeReplaceableCollection, MutableCollection {
     }
 
     #if swift(>=3.0)
-        public mutating func replaceSubrange<C : Collection where C.Iterator.Element == String?>(subRange: Range<Int>, with newElements: C) {
+        public mutating func replaceSubrange<C : Collection where C.Iterator.Element == String?>(_ subRange: Range<Int>, with newElements: C) {
             self.values.replaceSubrange(subRange, with: newElements)
         }
     #else
