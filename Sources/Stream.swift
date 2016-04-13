@@ -22,7 +22,7 @@ extension Sending {
 }
 
 extension Sending {
-    public func send(data: Data) throws {
+    public func send(_ data: Data) throws {
         try send(data, timingOut: .never)
     }
     
