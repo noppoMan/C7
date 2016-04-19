@@ -1,4 +1,4 @@
 public enum StreamError: ErrorProtocol {
-    case closedStream
-    case timeout
+    case closedStream(data: Data)
+    case timeout(data: Data)
 }
