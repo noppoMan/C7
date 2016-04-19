@@ -1,9 +1,9 @@
 public protocol AsyncHost {
-    func accept(timingOut deadline: Double, result: (Void throws -> AsyncStream) -> Void)
+    func accept(timingOut deadline: Double, completion: (Void throws -> AsyncStream) -> Void)
 }
 
 extension AsyncHost {
-    public func accept(result: (Void throws -> AsyncStream) -> Void) {
-        accept(timingOut: .never, result: result)
+    public func accept(completion: (Void throws -> AsyncStream) -> Void) {
+        accept(timingOut: .never, completion: completion)
     }
 }

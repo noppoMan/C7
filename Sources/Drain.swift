@@ -58,7 +58,7 @@ public final class Drain: DataRepresentable, Stream {
         return Data(data)
     }
 
-    public func send(data: Data, timingOut deadline: Double = .never) throws {
+    public func send(_ data: Data, timingOut deadline: Double = .never) throws {
         buffer += data.bytes
     }
 

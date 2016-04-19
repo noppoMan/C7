@@ -28,7 +28,7 @@ extension Data: RangeReplaceableCollection, MutableCollection {
     }
 
     #if swift(>=3.0)
-        public mutating func replaceSubrange<C : Collection where C.Iterator.Element == Byte>(subRange: Range<Int>, with newElements: C) {
+        public mutating func replaceSubrange<C : Collection where C.Iterator.Element == Byte>(_ subRange: Range<Int>, with newElements: C) {
             self.bytes.replaceSubrange(subRange, with: newElements)
         }
     #else

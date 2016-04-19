@@ -1,5 +1,5 @@
 public protocol Sending: AsyncSending {
-    func send(data: Data, timingOut deadline: Double) throws
+    func send(_ data: Data, timingOut deadline: Double) throws
     func flush(timingOut deadline: Double) throws
 }
 
@@ -12,17 +12,17 @@ public protocol ReceivingStream: Closable, Receiving {}
 public protocol Stream: SendingStream, ReceivingStream {}
 
 extension Sending {
-    public func send(data: Data, timingOut deadline: Double, result: (Void throws -> Void) -> Void) {
-        result { try self.send(data, timingOut: deadline) }
+    public func send(_ data: Data, timingOut deadline: Double, completion: (Void throws -> Void) -> Void) {
+        completion { try self.send(data, timingOut: deadline) }
     }
 
-    public func flush(timingOut deadline: Double, result: (Void throws -> Void) -> Void) {
-        result { try self.flush(timingOut: deadline) }
+    public func flush(timingOut deadline: Double, completion: (Void throws -> Void) -> Void) {
+        completion { try self.flush(timingOut: deadline) }
     }
 }
 
 extension Sending {
-    public func send(data: Data) throws {
+    public func send(_ data: Data) throws {
         try send(data, timingOut: .never)
     }
     
@@ -32,8 +32,8 @@ extension Sending {
 }
 
 extension Receiving {
-    public func receive(upTo byteCount: Int, timingOut deadline: Double, result: (Void throws -> Data) -> Void) {
-        result { try self.receive(upTo: byteCount, timingOut: deadline) }
+    public func receive(upTo byteCount: Int, timingOut deadline: Double, completion: (Void throws -> Data) -> Void) {
+        completion { try self.receive(upTo: byteCount, timingOut: deadline) }
     }
 }
 
