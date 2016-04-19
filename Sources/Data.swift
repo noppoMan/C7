@@ -190,6 +190,13 @@ extension String: DataConvertible {
 }
 
 extension Data {
+    public init(start: UnsafePointer<Byte>, count: Int) {
+        let buffer = UnsafeBufferPointer(start: start, count: count);
+        self.bytes = Array(buffer)
+    }
+}
+
+extension Data {
     public func withUnsafeBufferPointer<R>(@noescape body: (UnsafeBufferPointer<Byte>) throws -> R) rethrows -> R {
         return try bytes.withUnsafeBufferPointer(body)
     }
