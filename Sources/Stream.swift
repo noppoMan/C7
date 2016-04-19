@@ -48,7 +48,6 @@ extension Receiving {
 }
 
 public protocol BinaryStream: Stream {
-    associatedtype Interchanged = Data
     func send(_ data: Data, timingOut deadline: Double) throws
     func receive(upTo byteCount: Int, timingOut deadline: Double) throws -> Data
     func flush(timingOut deadline: Double) throws
