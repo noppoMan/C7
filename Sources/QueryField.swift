@@ -17,6 +17,8 @@ extension QueryField: RangeReplaceableCollection, MutableCollection {
         self.init([])
     }
 
+    public typealias Index = Int
+
     #if swift(>=3.0)
         public mutating func replaceSubrange<C : Collection where C.Iterator.Element == String?>(_ subRange: Range<Int>, with newElements: C) {
             self.values.replaceSubrange(subRange, with: newElements)
@@ -37,12 +39,16 @@ extension QueryField: RangeReplaceableCollection, MutableCollection {
         }
     #endif
 
-    public var startIndex: Int {
+    public var startIndex: Index {
         return values.startIndex
     }
 
-    public var endIndex: Int {
+    public var endIndex: Index {
         return values.endIndex
+    }
+
+    public func index(after i: Index) -> Index {
+        return i + 1
     }
 
     public subscript(index: Int) -> String? {
