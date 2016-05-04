@@ -27,8 +27,6 @@ extension Data: RangeReplaceableCollection, MutableCollection {
         self.init([])
     }
 
-    public typealias Index = Int
-
     #if swift(>=3.0)
         public mutating func replaceSubrange<C : Collection where C.Iterator.Element == Byte>(_ subRange: Range<Int>, with newElements: C) {
             self.bytes.replaceSubrange(subRange, with: newElements)
@@ -49,19 +47,19 @@ extension Data: RangeReplaceableCollection, MutableCollection {
         }
     #endif
 
-    public var startIndex: Index {
+    public var startIndex: Int {
         return bytes.startIndex
     }
 
-    public var endIndex: Index {
+    public var endIndex: Int {
         return bytes.endIndex
     }
 
-    public func index(after i: Index) -> Index {
+    public func index(after i: Int) -> Int {
         return i + 1
     }
 
-    public subscript(index: Index) -> Byte {
+    public subscript(index: Int) -> Byte {
         get {
             return bytes[index]
         }
@@ -71,7 +69,7 @@ extension Data: RangeReplaceableCollection, MutableCollection {
         }
     }
 
-    public subscript(bounds: Range<Index>) -> ArraySlice<Byte> {
+    public subscript(bounds: Range<Int>) -> ArraySlice<Byte> {
         get {
             return bytes[bounds]
         }
