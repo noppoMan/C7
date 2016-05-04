@@ -55,6 +55,10 @@ extension Data: RangeReplaceableCollection, MutableCollection {
         return bytes.endIndex
     }
 
+    public func index(after i: Int) -> Int {
+        return i + 1
+    }
+
     public subscript(index: Int) -> Byte {
         get {
             return bytes[index]
