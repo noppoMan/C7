@@ -22,10 +22,26 @@ extension Data {
     }
 }
 
+extension Data {
+    public init(_ slice: ArraySlice<Byte>) {
+        self.init(Array(slice))
+    }
+}
+
 extension Data: RangeReplaceableCollection, MutableCollection {
     public init() {
         self.init([])
     }
+
+    #if swift(>=3.0)
+        public init<S : Sequence where S.Iterator.Element == Byte>(_ elements: S) {
+            self.init(Array(elements))
+        }
+    #else
+        public init<S : SequenceType where S.Generator.Element == Byte>(_ elements: S) {
+            self.init(Array(elements))
+        }
+    #endif
 
     #if swift(>=3.0)
         public mutating func replaceSubrange<C : Collection where C.Iterator.Element == Byte>(_ subRange: Range<Int>, with newElements: C) {
