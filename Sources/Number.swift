@@ -65,6 +65,92 @@ extension Number {
     }
 }
 
+extension Number {
+    var storedAsInt: Bool {
+        switch self {
+        case .int: return true
+        default: return false
+        }
+    }
+
+    var storedAsInt8: Bool {
+        switch self {
+        case .int8: return true
+        default: return false
+        }
+    }
+
+    var storedAsInt16: Bool {
+        switch self {
+        case .int16: return true
+        default: return false
+        }
+    }
+
+    var storedAsInt32: Bool {
+        switch self {
+        case .int32: return true
+        default: return false
+        }
+    }
+
+    var storedAsInt64: Bool {
+        switch self {
+        case .int64: return true
+        default: return false
+        }
+    }
+
+    var storedAsUInt: Bool {
+        switch self {
+        case .uint: return true
+        default: return false
+        }
+    }
+
+    var storedAsUInt8: Bool {
+        switch self {
+        case .uint8: return true
+        default: return false
+        }
+    }
+
+    var storedAsUInt16: Bool {
+        switch self {
+        case .uint16: return true
+        default: return false
+        }
+    }
+
+    var storedAsUInt32: Bool {
+        switch self {
+        case .uint32: return true
+        default: return false
+        }
+    }
+
+    var storedAsUInt64: Bool {
+        switch self {
+        case .uint64: return true
+        default: return false
+        }
+    }
+
+    var storedAsFloat: Bool {
+        switch self {
+        case .float: return true
+        default: return false
+        }
+    }
+
+    var storedAsDouble: Bool {
+        switch self {
+        case .double: return true
+        default: return false
+        }
+    }
+}
+
 extension Int {
     init(_ number: Number) {
         switch number {
