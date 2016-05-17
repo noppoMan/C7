@@ -24,9 +24,9 @@ public final class AsyncDrain: DataRepresentable, AsyncStream {
             return
         }
         
-        stream.receive(upTo: 1024, timingOut: deadline) { [unowned self] in
+        stream.receive(upTo: 1024, timingOut: deadline) { [unowned self] getData in
             do {
-                let chunk = try $0()
+                let chunk = try getData()
                 buffer.bytes += chunk.bytes
             } catch {
                 completion {
