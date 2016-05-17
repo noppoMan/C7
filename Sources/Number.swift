@@ -1,9 +1,11 @@
 public enum Number {
+    case int(Int)
     case int8(Int8)
     case int16(Int16)
     case int32(Int32)
     case int64(Int64)
 
+    case uint(UInt)
     case uint8(UInt8)
     case uint16(UInt16)
     case uint32(UInt32)
@@ -14,6 +16,10 @@ public enum Number {
 }
 
 extension Number {
+    init(number: Int) {
+        self = .int(number)
+    }
+
     init(number: Int8) {
         self = .int8(number)
     }
@@ -28,6 +34,10 @@ extension Number {
 
     init(number: Int64) {
         self = .int64(number)
+    }
+
+    init(number: UInt) {
+        self = .uint(number)
     }
 
     init(number: UInt8) {
@@ -55,14 +65,37 @@ extension Number {
     }
 }
 
-extension Int8 {
+extension Int {
     init(_ number: Number) {
         switch number {
+        case .int(let n): self.init(n)
         case .int8(let n): self.init(n)
         case .int16(let n): self.init(n)
         case .int32(let n): self.init(n)
         case .int64(let n): self.init(n)
 
+        case .uint(let n): self.init(n)
+        case .uint8(let n): self.init(n)
+        case .uint16(let n): self.init(n)
+        case .uint32(let n): self.init(n)
+        case .uint64(let n): self.init(n)
+
+        case .float(let n): self.init(n)
+        case .double(let n): self.init(n)
+        }
+    }
+}
+
+extension Int8 {
+    init(_ number: Number) {
+        switch number {
+        case .int(let n): self.init(n)
+        case .int8(let n): self.init(n)
+        case .int16(let n): self.init(n)
+        case .int32(let n): self.init(n)
+        case .int64(let n): self.init(n)
+
+        case .uint(let n): self.init(n)
         case .uint8(let n): self.init(n)
         case .uint16(let n): self.init(n)
         case .uint32(let n): self.init(n)
@@ -77,11 +110,13 @@ extension Int8 {
 extension Int16 {
     init(_ number: Number) {
         switch number {
+        case .int(let n): self.init(n)
         case .int8(let n): self.init(n)
         case .int16(let n): self.init(n)
         case .int32(let n): self.init(n)
         case .int64(let n): self.init(n)
 
+        case .uint(let n): self.init(n)
         case .uint8(let n): self.init(n)
         case .uint16(let n): self.init(n)
         case .uint32(let n): self.init(n)
@@ -96,11 +131,13 @@ extension Int16 {
 extension Int32 {
     init(_ number: Number) {
         switch number {
+        case .int(let n): self.init(n)
         case .int8(let n): self.init(n)
         case .int16(let n): self.init(n)
         case .int32(let n): self.init(n)
         case .int64(let n): self.init(n)
 
+        case .uint(let n): self.init(n)
         case .uint8(let n): self.init(n)
         case .uint16(let n): self.init(n)
         case .uint32(let n): self.init(n)
@@ -115,11 +152,34 @@ extension Int32 {
 extension Int64 {
     init(_ number: Number) {
         switch number {
+        case .int(let n): self.init(n)
         case .int8(let n): self.init(n)
         case .int16(let n): self.init(n)
         case .int32(let n): self.init(n)
         case .int64(let n): self.init(n)
 
+        case .uint(let n): self.init(n)
+        case .uint8(let n): self.init(n)
+        case .uint16(let n): self.init(n)
+        case .uint32(let n): self.init(n)
+        case .uint64(let n): self.init(n)
+
+        case .float(let n): self.init(n)
+        case .double(let n): self.init(n)
+        }
+    }
+}
+
+extension UInt {
+    init(_ number: Number) {
+        switch number {
+        case .int(let n): self.init(n)
+        case .int8(let n): self.init(n)
+        case .int16(let n): self.init(n)
+        case .int32(let n): self.init(n)
+        case .int64(let n): self.init(n)
+
+        case .uint(let n): self.init(n)
         case .uint8(let n): self.init(n)
         case .uint16(let n): self.init(n)
         case .uint32(let n): self.init(n)
@@ -134,11 +194,13 @@ extension Int64 {
 extension UInt8 {
     init(_ number: Number) {
         switch number {
+        case .int(let n): self.init(n)
         case .int8(let n): self.init(n)
         case .int16(let n): self.init(n)
         case .int32(let n): self.init(n)
         case .int64(let n): self.init(n)
 
+        case .uint(let n): self.init(n)
         case .uint8(let n): self.init(n)
         case .uint16(let n): self.init(n)
         case .uint32(let n): self.init(n)
@@ -153,11 +215,13 @@ extension UInt8 {
 extension UInt16 {
     init(_ number: Number) {
         switch number {
+        case .int(let n): self.init(n)
         case .int8(let n): self.init(n)
         case .int16(let n): self.init(n)
         case .int32(let n): self.init(n)
         case .int64(let n): self.init(n)
 
+        case .uint(let n): self.init(n)
         case .uint8(let n): self.init(n)
         case .uint16(let n): self.init(n)
         case .uint32(let n): self.init(n)
@@ -172,11 +236,13 @@ extension UInt16 {
 extension UInt32 {
     init(_ number: Number) {
         switch number {
+        case .int(let n): self.init(n)
         case .int8(let n): self.init(n)
         case .int16(let n): self.init(n)
         case .int32(let n): self.init(n)
         case .int64(let n): self.init(n)
 
+        case .uint(let n): self.init(n)
         case .uint8(let n): self.init(n)
         case .uint16(let n): self.init(n)
         case .uint32(let n): self.init(n)
@@ -191,11 +257,13 @@ extension UInt32 {
 extension UInt64 {
     init(_ number: Number) {
         switch number {
+        case .int(let n): self.init(n)
         case .int8(let n): self.init(n)
         case .int16(let n): self.init(n)
         case .int32(let n): self.init(n)
         case .int64(let n): self.init(n)
 
+        case .uint(let n): self.init(n)
         case .uint8(let n): self.init(n)
         case .uint16(let n): self.init(n)
         case .uint32(let n): self.init(n)
@@ -210,11 +278,13 @@ extension UInt64 {
 extension Float {
     init(_ number: Number) {
         switch number {
+        case .int(let n): self.init(n)
         case .int8(let n): self.init(n)
         case .int16(let n): self.init(n)
         case .int32(let n): self.init(n)
         case .int64(let n): self.init(n)
 
+        case .uint(let n): self.init(n)
         case .uint8(let n): self.init(n)
         case .uint16(let n): self.init(n)
         case .uint32(let n): self.init(n)
@@ -229,11 +299,13 @@ extension Float {
 extension Double {
     init(_ number: Number) {
         switch number {
+        case .int(let n): self.init(n)
         case .int8(let n): self.init(n)
         case .int16(let n): self.init(n)
         case .int32(let n): self.init(n)
         case .int64(let n): self.init(n)
 
+        case .uint(let n): self.init(n)
         case .uint8(let n): self.init(n)
         case .uint16(let n): self.init(n)
         case .uint32(let n): self.init(n)
