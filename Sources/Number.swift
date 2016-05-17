@@ -13,6 +13,48 @@ public enum Number {
     case double(Double)
 }
 
+extension Number {
+    init(number: Int8) {
+        self = .int8(number)
+    }
+
+    init(number: Int16) {
+        self = .int16(number)
+    }
+
+    init(number: Int32) {
+        self = .int32(number)
+    }
+
+    init(number: Int64) {
+        self = .int64(number)
+    }
+
+    init(number: UInt8) {
+        self = .uint8(number)
+    }
+
+    init(number: UInt16) {
+        self = .uint16(number)
+    }
+
+    init(number: UInt32) {
+        self = .uint32(number)
+    }
+
+    init(number: UInt64) {
+        self = .uint64(number)
+    }
+
+    init(number: Float) {
+        self = .float(number)
+    }
+
+    init(number: Double) {
+        self = .double(number)
+    }
+}
+
 extension Int8 {
     init(_ number: Number) {
         switch number {
