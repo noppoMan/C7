@@ -66,84 +66,84 @@ extension Number {
 }
 
 extension Number {
-    var storedAsInt: Bool {
+    var isStoredAsInt: Bool {
         switch self {
         case .int: return true
         default: return false
         }
     }
 
-    var storedAsInt8: Bool {
+    var isStoredAsInt8: Bool {
         switch self {
         case .int8: return true
         default: return false
         }
     }
 
-    var storedAsInt16: Bool {
+    var isStoredAsInt16: Bool {
         switch self {
         case .int16: return true
         default: return false
         }
     }
 
-    var storedAsInt32: Bool {
+    var isStoredAsInt32: Bool {
         switch self {
         case .int32: return true
         default: return false
         }
     }
 
-    var storedAsInt64: Bool {
+    var isStoredAsInt64: Bool {
         switch self {
         case .int64: return true
         default: return false
         }
     }
 
-    var storedAsUInt: Bool {
+    var isStoredAsUInt: Bool {
         switch self {
         case .uint: return true
         default: return false
         }
     }
 
-    var storedAsUInt8: Bool {
+    var isStoredAsUInt8: Bool {
         switch self {
         case .uint8: return true
         default: return false
         }
     }
 
-    var storedAsUInt16: Bool {
+    var isStoredAsUInt16: Bool {
         switch self {
         case .uint16: return true
         default: return false
         }
     }
 
-    var storedAsUInt32: Bool {
+    var isStoredAsUInt32: Bool {
         switch self {
         case .uint32: return true
         default: return false
         }
     }
 
-    var storedAsUInt64: Bool {
+    var isStoredAsUInt64: Bool {
         switch self {
         case .uint64: return true
         default: return false
         }
     }
 
-    var storedAsFloat: Bool {
+    var isStoredAsFloat: Bool {
         switch self {
         case .float: return true
         default: return false
         }
     }
 
-    var storedAsDouble: Bool {
+    var isStoredAsDouble: Bool {
         switch self {
         case .double: return true
         default: return false
