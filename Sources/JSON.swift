@@ -1,11 +1,9 @@
-
 public enum JSON {
-
     public enum Number {
         case integer(Int)
+        case unsignedInteger(UInt)
         case double(Double)
     }
-    
     case object([String: JSON])
     case array([JSON])
     case number(JSON.Number)
