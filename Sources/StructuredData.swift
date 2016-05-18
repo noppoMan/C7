@@ -12,9 +12,9 @@ public enum StructuredData {
     case null
     case bool(Bool)
     case double(Double)
-    case integer(Int)
+    case int(Int)
     case string(String)
-    case binary(Data)
+    case bytes(Data)
     case array([StructuredData])
     case dictionary([String: StructuredData])
 }
