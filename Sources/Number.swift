@@ -16,51 +16,51 @@ public enum Number {
 }
 
 extension Number {
-    init(number: Int) {
+    init(_ number: Int) {
         self = .int(number)
     }
 
-    init(number: Int8) {
+    init(_ number: Int8) {
         self = .int8(number)
     }
 
-    init(number: Int16) {
+    init(_ number: Int16) {
         self = .int16(number)
     }
 
-    init(number: Int32) {
+    init(_ number: Int32) {
         self = .int32(number)
     }
 
-    init(number: Int64) {
+    init(_ number: Int64) {
         self = .int64(number)
     }
 
-    init(number: UInt) {
+    init(_ number: UInt) {
         self = .uint(number)
     }
 
-    init(number: UInt8) {
+    init(_ number: UInt8) {
         self = .uint8(number)
     }
 
-    init(number: UInt16) {
+    init(_ number: UInt16) {
         self = .uint16(number)
     }
 
-    init(number: UInt32) {
+    init(_ number: UInt32) {
         self = .uint32(number)
     }
 
-    init(number: UInt64) {
+    init(_ number: UInt64) {
         self = .uint64(number)
     }
 
-    init(number: Float) {
+    init(_ number: Float) {
         self = .float(number)
     }
 
-    init(number: Double) {
+    init(_ number: Double) {
         self = .double(number)
     }
 }
@@ -173,22 +173,21 @@ extension Int {
 }
 
 extension Int8 {
-    init(_ number: Number) {
+    init?(_ number: Number) {
         switch number {
-        case .int(let n): self.init(n)
-        case .int8(let n): self.init(n)
-        case .int16(let n): self.init(n)
-        case .int32(let n): self.init(n)
-        case .int64(let n): self.init(n)
-
-        case .uint(let n): self.init(n)
-        case .uint8(let n): self.init(n)
-        case .uint16(let n): self.init(n)
-        case .uint32(let n): self.init(n)
-        case .uint64(let n): self.init(n)
-
-        case .float(let n): self.init(n)
-        case .double(let n): self.init(n)
+        case let .int(value)    where value <= Int(Int8.max):    self.init(value)
+        case let .int8(value):                                   self.init(value)
+        case let .int16(value)  where value <= Int16(Int8.max):  self.init(value)
+        case let .int32(value)  where value <= Int32(Int8.max):  self.init(value)
+        case let .int64(value)  where value <= Int64(Int8.max):  self.init(value)
+        case let .uint(value)   where value <= UInt(Int8.max):   self.init(value)
+        case let .uint8(value):                                  self.init(value)
+        case let .uint16(value) where value <= UInt16(Int8.max): self.init(value)
+        case let .uint32(value) where value <= UInt32(Int8.max): self.init(value)
+        case let .uint64(value) where value <= UInt64(Int8.max): self.init(value)
+        case let .float(value)  where value <= Float(Int8.max):  self.init(value)
+        case let .double(value) where value <= Double(Int8.max): self.init(value)
+        default: return nil
         }
     }
 }
