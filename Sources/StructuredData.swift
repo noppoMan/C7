@@ -9,7 +9,7 @@ public protocol StructuredDataRepresentable {
 public protocol StructuredDataConvertible: StructuredDataInitializable, StructuredDataRepresentable {}
 
 public enum StructuredData {
-    case nullValue
+    case null
     case bool(Bool)
     case double(Double)
     case integer(Int)
