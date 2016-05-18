@@ -14,7 +14,7 @@ public enum StructuredData {
     case double(Double)
     case int(Int)
     case string(String)
-    case bytes(Data)
+    case data(Data)
     case array([StructuredData])
     case dictionary([String: StructuredData])
 }
