@@ -16,52 +16,52 @@ public enum Number {
 }
 
 extension Number {
-    init(_ number: Int) {
-        self = .int(number)
+    init(_ value: Int) {
+        self = .int(value)
     }
 
-    init(_ number: Int8) {
-        self = .int8(number)
+    init(_ value: Int8) {
+        self = .int8(value)
     }
 
-    init(_ number: Int16) {
-        self = .int16(number)
+    init(_ value: Int16) {
+        self = .int16(value)
     }
 
-    init(_ number: Int32) {
-        self = .int32(number)
+    init(_ value: Int32) {
+        self = .int32(value)
     }
 
-    init(_ number: Int64) {
-        self = .int64(number)
+    init(_ value: Int64) {
+        self = .int64(value)
     }
 
-    init(_ number: UInt) {
-        self = .uint(number)
+    init(_ value: UInt) {
+        self = .uint(value)
     }
 
-    init(_ number: UInt8) {
-        self = .uint8(number)
+    init(_ value: UInt8) {
+        self = .uint8(value)
     }
 
-    init(_ number: UInt16) {
-        self = .uint16(number)
+    init(_ value: UInt16) {
+        self = .uint16(value)
     }
 
-    init(_ number: UInt32) {
-        self = .uint32(number)
+    init(_ value: UInt32) {
+        self = .uint32(value)
     }
 
-    init(_ number: UInt64) {
-        self = .uint64(number)
+    init(_ value: UInt64) {
+        self = .uint64(value)
     }
 
-    init(_ number: Float) {
-        self = .float(number)
+    init(_ value: Float) {
+        self = .float(value)
     }
 
-    init(_ number: Double) {
-        self = .double(number)
+    init(_ value: Double) {
+        self = .double(value)
     }
 }
 
