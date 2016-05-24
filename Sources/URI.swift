@@ -14,10 +14,10 @@ public struct URI {
     public var host: String?
     public var port: Int?
     public var path: String?
-    public var query: Query
+    public var query:  [String: [String?]]
     public var fragment: String?
 
-    public init(scheme: String? = nil, userInfo: UserInfo? = nil, host: String? = nil, port: Int? = nil, path: String? = nil, query: Query = [:], fragment: String? = nil) {
+    public init(scheme: String? = nil, userInfo: UserInfo? = nil, host: String? = nil, port: Int? = nil, path: String? = nil, query: [String: [String?]] = [:], fragment: String? = nil) {
         self.scheme = scheme
         self.userInfo = userInfo
         self.host = host
