@@ -176,7 +176,7 @@ extension String: DataConvertible {
                 switch decoder.decode(&generator) {
                 case .scalarValue(let char): string.unicodeScalars.append(char)
                 case .emptyInput: break loop
-                case .error: return nil
+                case .error: throw StringError()
                 }
             }
 
